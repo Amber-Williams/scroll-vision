@@ -101,15 +101,16 @@ function cameraHands() {
             _3.x * _2.y) /
           2
         const areaF = area * 1000
+        const contentElement = document.getElementById('content')
 
         if (areaF < -16) {
-          console.info('UP fast')
+          contentElement?.scrollBy(0, -10)
         } else if (areaF < -10) {
-          console.info('UP')
+          contentElement?.scrollBy(0, -1)
         } else if (areaF > 8) {
-          console.info('DOWN FAST')
+          contentElement?.scrollBy(0, 10)
         } else if (areaF > 3) {
-          console.info('DOWN')
+          contentElement?.scrollBy(0, 1)
         }
 
         drawingUtils.drawLandmarks(
