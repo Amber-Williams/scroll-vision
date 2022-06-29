@@ -102,6 +102,25 @@ function cameraHands() {
           2
         const areaF = area * 1000
         const contentElement = document.getElementById('content')
+        if (contentElement) {
+          const contentHeight =
+            contentElement.getBoundingClientRect().height / 3
+
+          const contentWidth = contentElement.getBoundingClientRect().width / 2
+
+          const contentY =
+            canvasElement.getBoundingClientRect().y +
+            canvasElement.getBoundingClientRect().height * indexFingerBottom.y -
+            contentHeight
+
+          const contentX =
+            canvasElement.getBoundingClientRect().x +
+            canvasElement.getBoundingClientRect().width * indexFingerBottom.x -
+            contentWidth
+
+          contentElement.style.top = `${contentY}px`
+          contentElement.style.left = `${contentX}px`
+        }
 
         if (areaF < -16) {
           contentElement?.scrollBy(0, -10)
