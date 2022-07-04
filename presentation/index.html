@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./node_modules/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="./node_modules/reveal.js/dist/theme/moon.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+            <h4>What's this all about?</h4>
+            <div class="r-stack">
+                <img class="fragment" src="./assets/google-glass.webp" width="550"/>
+                <img class="fragment" src="./assets/ml-search-trends.png" width="600"/>
+                <video class="fragment" width="650" loop="true" autoplay="autoplay" controls muted>
+                    <source src="./assets/google-lens.mov" type=video/mp4>
+                </video>
+                <video class="fragment" width="700" loop="true" autoplay="autoplay" controls muted>
+                    <source src="./assets/ar-glasses.mov" type=video/mp4>
+                </video>
+            </div>
+            <aside class="notes">
+                * fragment [img with google glass]
+                Who remember's Google glasses?
+                - They were ahead of their time
+                - Due to lack of data collection and machine learning, they weren't yet feasible
+                
+
+                * fragment [img with ml search trends]
+                ML is becoming more common place and even smarter
+                - From GPT-3 powered auto completing in our IDE (Microsoft's Copilot)
+                - To self driving cars
+                
+                
+                * fragment [video with ar google lens]
+                Here's a clip from this year's Google Keynote
+                - Obviously, we've all likely used apps like this Augmented Reality app, on our phones
+                
+
+                * fragment [video with ar glasses and google translate]
+                - But the magic will realy come alive when, we can use it in the real world
+            </aside>
+        </section>
+
+        <section>
+            <h4>What's out there today?</h4>
+            <div class="r-stack">
+                <img class="fragment" src="./assets/webxr-logo.svg" width="550"/>
+                
+                <div class="fragment">
+                    <video width="600" controls>
+                        <source src="./assets/webxr-with-hands-demo.mp4" type=video/mp4>
+                    </video>
+                    <br/>
+                    <br/>
+                    <a href="https://animated-stump-chatter.glitch.me/"><button>Link to VR app</button></a>
+                </div>
+            </div>
+            <aside class="notes">
+                * fragment [webXR logo]
+                Today large tech companies are all coming together to agree on a web standard for AR
+                - Called WebXR
+                - Well...all but one
+                - Apple
+
+                * fragment [video of WebXR demo]
+                Using WebXR via AFrame.js I was able to whip this app together
+                - It uses also the Hand tracking API in WebXR to track your hands in real time
+                - I wanted to take this a step further and try to recreate a functional AR app
+                    - doing something as simpile as scrolling sites with
+            </aside>
+        </section>
+        <section>
+            <h1>Demo time : )</h1>
+        </section>
+        <section>
+            <h4>How the heck was it made?</h4>
+            <div class="r-stack">
+                <img class="fragment" src="./assets/google-media-pipe-hands.gif" width="300"/>
+                <img class="fragment" src="./assets/hand-landmarks.png" width="800"/>
+                <img class="fragment" src="./assets/thumb-maths.png" width="800"/>
+            </div>
+            <aside class="notes">
+                * fragment [MediaPipe hands gif]
+                Google has an open source hand tracking API called MediaPipe hands
+                - It tracks your hands in almost real time
+                - my app on my computer is about 30 FPS
+
+
+                * fragment [hand landmarks img]
+                - It tracks the X, Y and Z coordinates of 20 different landmark points of your hand
+                
+                How do I make this similar to scrolling on a mobile phone?
+                
+
+                * fragment [thumb maths img]
+                - I settled on, what felt most natural without a phone
+                - Using the thumb tips location from the center point of the two root landmarks in the index finger
+                
+                Now this should be optimized to use ML itself and ask the user to supply the greatest flexible points within a comfortable range
+                - Then using those to tailor the scroll positions to each user
+
+                While this app doesn't use WebXR, it certainly helped me understand that ML and AR together
+                - can finally change how we interact with the world again
+                - as the internet and mobile devices once did
+            </aside>
+        </section>
+      </div>
+    </div>
+    <script src="./node_modules/reveal.js/dist/reveal.js"></script>
+    <script>
+      Reveal.initialize();
+    </script>
+  </body>
+</html>
