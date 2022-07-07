@@ -3,6 +3,8 @@ import mpHands from '@mediapipe/hands'
 import drawingUtils from '@mediapipe/drawing_utils'
 import controls from '@mediapipe/control_utils'
 
+const SHOW_LINES = true
+
 function cameraHands() {
   testSupport([{ client: 'Chrome' }])
 
@@ -82,7 +84,7 @@ function cameraHands() {
           canvasCtx,
           landmarks,
           mpHands.HAND_CONNECTIONS,
-          { color: '#6642f5' }
+          { color: SHOW_LINES ? '#6642f5' : 'transparent' }
         )
 
         const thumb = landmarks[4]
@@ -136,8 +138,8 @@ function cameraHands() {
           canvasCtx,
           [thumb, indexFingerBottom, indexFingerTop],
           {
-            color: '#00FF00',
-            fillColor: '#FF0000',
+            color: SHOW_LINES ? '#00FF00' : 'transparent',
+            fillColor: SHOW_LINES ? '#FF0000' : 'transparent',
             radius: (data: drawingUtils.Data) => {
               return drawingUtils.lerp(data.from!.z!, -0.15, 0.1, 10, 1)
             },
@@ -168,7 +170,6 @@ function cameraHands() {
     minTrackingConfidence: 0.5,
   })
     .add([
-      new controls.Toggle({ title: 'Selfie Mode', field: 'selfieMode' }),
       new controls.SourcePicker({
         onFrame: async (
           input: controls.InputImage,
@@ -187,29 +188,6 @@ function cameraHands() {
           canvasElement.height = height
           await hands.send({ image: input })
         },
-      }),
-      new controls.Slider({
-        title: 'Max Number of Hands',
-        field: 'maxNumHands',
-        range: [1, 4],
-        step: 1,
-      }),
-      new controls.Slider({
-        title: 'Model Complexity',
-        field: 'modelComplexity',
-        discrete: ['Lite', 'Full'],
-      }),
-      new controls.Slider({
-        title: 'Min Detection Confidence',
-        field: 'minDetectionConfidence',
-        range: [0, 1],
-        step: 0.01,
-      }),
-      new controls.Slider({
-        title: 'Min Tracking Confidence',
-        field: 'minTrackingConfidence',
-        range: [0, 1],
-        step: 0.01,
       }),
     ])
     .on((x) => {
